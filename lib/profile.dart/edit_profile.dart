@@ -22,6 +22,11 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController userEmailController = TextEditingController();
   TextEditingController userPhoneController = TextEditingController();
   TextEditingController userAddressController = TextEditingController();
+  TextEditingController userPassword = TextEditingController();
+  TextEditingController userFullName = TextEditingController();
+  TextEditingController userGender = TextEditingController();
+  TextEditingController userAccountType = TextEditingController();
+  TextEditingController userAge = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +93,15 @@ class _EditProfileState extends State<EditProfile> {
                         ],
                       ),
                     ),
+                    const Align(
+                        alignment: Alignment.topRight,
+                        child: Text(
+                          "السيره الذاتيه",
+                          style: TextStyle(
+                              fontFamily: primFont,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400),
+                        )),
                     const SizedBox(
                       height: 20,
                     ),
@@ -172,32 +186,44 @@ class _EditProfileState extends State<EditProfile> {
                       isvible: false,
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     BlocConsumer<UserDataCubit, UserDataState>(
                       listener: (context, state) {
-                        // TODO: implement listener
+                        if (state is SuccessUpDateUser) {
+                          Get.snackbar("success", "useful data");
+                        } else if (state is ErrorUpdateUser) {
+                          Get.snackbar("Erorr", state.error);
+                        }
                       },
                       builder: (context, state) {
                         var data = UserDataCubit.get(context);
                         return CastomButton(
-                            onTap: () {
-                              if (userInfo.text.isNotEmpty &&
-                                  userNameController.text.isNotEmpty &&
-                                  userEmailController.text.isNotEmpty &&
-                                  userAddressController.text.isNotEmpty &&
-                                  userPhoneController.text.isNotEmpty) {
-                                data.upDateUserData(
-                                    userInfo: userInfo.text,
+                          onTap: () {
+                            data.upDateUserData(
                                     userName: userNameController.text,
+                                    userPassword:data.userModel!.userPassword.toString(),
+
+                                    userInfo:userInfo.text,
                                     userEmail: userEmailController.text,
                                     userPhone: userPhoneController.text,
-                                    userAddress: userAddressController.text);
-                              }
-                            },
-                            text: state is LoadingUpDateUser
-                                ? "تحميل "
-                                : "حفظ التعديلات");
+                                    userAddress: userAddressController.text,
+                                    userFullName: data.userModel!.userFullName.toString(),
+                                    userAccountType:data.userModel!.userAccountType.toString() ,
+                                    userAge:data.userModel!.userAge.toString() ,
+                                    userGender:data.userModel!.userGender.toString(),);
+                          },
+                          text: state is LoadingUpDateUser
+                              ? 'تحديث '
+                              : 'حفظ التعديلات ',
+                        );
+                        //  MaterialButton(onPressed: () {
+                        //
+                        //
+                        //   );
+                        // },
+                        // child: Text(""),
+                        // );
                       },
                     )
                   ]),

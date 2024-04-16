@@ -8,9 +8,7 @@ final class UserDataInitial extends UserDataState {}
 final class LoadingUserData extends UserDataState {}
 
 final class SuccessUserData extends UserDataState {
-  final UserModel userModel;
 
-  SuccessUserData({required this.userModel});
 }
 
 final class ErrorUserModel extends UserDataState {

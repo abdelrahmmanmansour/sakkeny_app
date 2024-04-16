@@ -58,19 +58,32 @@ class HomeRepoImplementation extends HomeRepo {
   }
 
   @override
-  Future<Map<String, dynamic>> upDataUserData(
+ upDataUserData(
       {required String userInfo,
       required String userName,
       required String userEmail,
       required String userPhone,
-      required String userAddress}) async {
+      required String userAddress,
+      required String userPassword,
+      required String userFullName,
+      required String userGender,
+      required String userAccountType,
+      required String userAge,
+
+      }) async {
     var data = await apiServices.putApi({
-      "userInfo": userInfo,
-      "userName": userName,
-      "userAddress": userAddress,
+      "userName":userName,
+      "userPassword": userPassword,
+      "userFullName":userFullName,
       "userEmail": userEmail,
-      "userNatId": userPhone,
-    }, "users");
+      "userNatId":userPhone ,
+      "userGender": userGender,
+      "userAge":userAge ,
+      "userInfo": userInfo,
+      "userAddress": userAddress,
+      "userAccountType": userAccountType
+    },"31" );
+    print("the update data ${data}");
     return data;
   }
 }

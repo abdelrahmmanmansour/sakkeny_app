@@ -47,6 +47,7 @@ void main() async {
   ServicesLocator.setupServiceLocator();
   id= CacheHelper.getData(key: "id");
 print("the id is ${CacheHelper.getData(key: "id")}");
+print("the id is ${CacheHelper.getData(key: "name")}");
 // print("id ${id!.toInt()}");
   runApp(SakenyApp());
 }
@@ -91,7 +92,7 @@ class SakenyApp extends StatelessWidget {
               'OtpVerification': (context) => OtpVerification(),
               SignUp().id: (context) => SignUp(),
               sign_as().id: (context) => sign_as(),
-              CustomTest().id: (context) => CustomTest(),
+              // CustomTest().id: (context) => CustomTest(),
               'Login': (context) => Login(),
               'comfirm': (context) => ComfirmNationalNum(),
               'suggest': (context) => suggestpractice(),
@@ -107,7 +108,7 @@ class SakenyApp extends StatelessWidget {
               "tenant_view_post": (context) => TenantViewPost(),
               "search": (context) => Search()
             },
-            initialRoute:id!=null?"Login": 'splash',
+            initialRoute:id!=null?"nav": 'splash',
           );
         },
       ),

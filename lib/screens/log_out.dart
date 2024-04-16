@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sakeny/Core/Services/CachedHelper.dart';
 import 'package:sakeny/costant.dart';
 import 'package:sakeny/screens/login.dart';
 import 'package:sakeny/screens/sign_as.dart';
@@ -106,19 +107,16 @@ class Logout1 extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(6),
                                   ),
                                 ),
-                                child: Center(
-                                  child: InkWell(
-                                    onTap: () {},
-                                    child: const Text(
-                                      'الغاء',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 14,
-                                        fontFamily: 'Marhey',
-                                        fontWeight: FontWeight.w400,
-                                        height: 0,
-                                      ),
+                                child:const Center(
+                                  child:  Text(
+                                    'الغاء',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontFamily: 'Marhey',
+                                      fontWeight: FontWeight.w400,
+                                      height: 0,
                                     ),
                                   ),
                                 ),
@@ -129,7 +127,9 @@ class Logout1 extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
+                                CacheHelper.removeData(key: "id");
+
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
                                  return Login();
                                },), (route) => false);
                               },
@@ -144,20 +144,18 @@ class Logout1 extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(6),
                                   ),
                                 ),
-                                child: Center(
-                                  child: InkWell(
-                                      onTap: () {},
-                                      child: const Text(
-                                        'نعم',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 14,
-                                          fontFamily: 'Marhey',
-                                          fontWeight: FontWeight.w400,
-                                          height: 0,
-                                        ),
-                                      )),
+                                child:const Center(
+                                  child:  Text(
+                                    'نعم',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontFamily: 'Marhey',
+                                      fontWeight: FontWeight.w400,
+                                      height: 0,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),

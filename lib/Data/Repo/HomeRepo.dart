@@ -22,6 +22,11 @@ Future<Map<String,dynamic>>upDataUserData({
     required String userEmail,
     required String userPhone,
     required String userAddress,
+    required String userPassword,
+    required String userFullName,
+    required String userGender,
+    required String userAccountType,
+    required String userAge,
 });
 Future<Map<String,dynamic>>logIn({
     required String userMail,
