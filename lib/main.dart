@@ -10,6 +10,8 @@ import 'package:sakeny/Core/Services/CachedHelper.dart';
 import 'package:sakeny/CustomTextCubit/custom_text_cubit.dart';
 import 'package:sakeny/Data/Repo/HomeRepoImplementation.dart';
 import 'package:sakeny/HomeCubit/UserDataCubit/user_data_cubit.dart';
+import 'package:sakeny/PostData/GetPost/get_post_cubit.dart';
+import 'package:sakeny/PostData/UpLoadData/upload_data_cubit.dart';
 import 'package:sakeny/SigInCubit/sig_in_cubit.dart';
 import 'package:sakeny/costant.dart';
 import 'package:sakeny/nav_screens/chat.dart';
@@ -66,7 +68,9 @@ class SakenyApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               UserDataCubit(ServicesLocator.getIt.get<HomeRepoImplementation>())..getUserData(),
-        )
+        ),
+        BlocProvider(create: (context) => TestCubit(),),
+        BlocProvider(create: (context) => GetPostCubit()..getDataPost(),)
 
       ],
       child: ScreenUtilInit(
@@ -85,7 +89,7 @@ class SakenyApp extends StatelessWidget {
               "chatBox": (context) => ChatBox(),
               "chat": (context) => Chat(),
               "suggestpractice": (context) => suggestpractice(),
-              "viewpost": (context) => ViewPost(),
+              // "viewpost": (context) => ViewPost(),
               'location': (context) => Location(),
               "benefit": (context) => BenefitsAndSecrvises(),
               'nav': (context) => Nave(),
@@ -103,12 +107,12 @@ class SakenyApp extends StatelessWidget {
               'list': (context) => List(),
               'p1': (context) => Profile(),
               "mypost": (context) => myposts(),
-              "p2": (context) => Post(),
+              // "p2": (context) => Post(),
               "home": (context) => Home(),
               "tenant_view_post": (context) => TenantViewPost(),
               "search": (context) => Search()
             },
-            initialRoute:id!=null?"nav": 'splash',
+            initialRoute:"nav",
           );
         },
       ),

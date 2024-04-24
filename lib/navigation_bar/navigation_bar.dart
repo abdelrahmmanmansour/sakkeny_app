@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sakeny/PostData/GetPost/get_post_cubit.dart';
 import 'package:sakeny/nav_screens/myposts.dart';
 import 'package:sakeny/costant.dart';
 import 'package:sakeny/nav_screens/chat_box.dart';
@@ -13,6 +14,7 @@ class Nave extends StatefulWidget {
 }
 
 class _NaveState extends State<Nave> {
+
   int cindex = 3;
   List<Widget> screens = [
     post_details(),
@@ -21,6 +23,11 @@ class _NaveState extends State<Nave> {
     myposts(),
   ];
   @override
+  void initState() {
+    GetPostCubit.get(context).getDataPost();
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[cindex],

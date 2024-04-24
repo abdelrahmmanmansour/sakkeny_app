@@ -1,10 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:sakeny/Data/Model/GetPostDataUser.dart';
 import 'package:sakeny/castom/button.dart';
 import 'package:sakeny/costant.dart';
 
 class ViewPost extends StatelessWidget {
-  const ViewPost({super.key});
-
+   ViewPost({super.key,required this.getPostDataUser});
+GetPostDataUser getPostDataUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,31 +19,32 @@ class ViewPost extends StatelessWidget {
               //height:  constrains.maxHeight/2,
               child: ListView(
                 children: [
-                  ListView.separated(
-                    itemCount: 5,
-                    shrinkWrap: true,
-                    physics: const BouncingScrollPhysics(),
-                    separatorBuilder: (context, index) {
-                      return const SizedBox(
-                        height: 12,
-                      );
-                    },
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding:
-                            const EdgeInsets.only(top: 4, right: 20, left: 20),
-                        child: Container(
-                          width: 331,
-                          height: 200,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/images/download (3).png"),
-                                fit: BoxFit.fill),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50),
+                    child: ListView.separated(
+                      itemCount: getPostDataUser.postPicTbls!.length,
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      separatorBuilder: (context, index) {
+                        return const SizedBox(
+                          height: 12,
+                        );
+                      },
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding:
+                              const EdgeInsets.only(top: 4, right: 20, left: 20),
+                          child: Container(
+                            width: 331,
+                            height: 200,
+                            decoration: const BoxDecoration(
+
+                            ),
+                            child: Image.memory(base64Decode(getPostDataUser.postPicTbls![index].pictureString.toString())),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),

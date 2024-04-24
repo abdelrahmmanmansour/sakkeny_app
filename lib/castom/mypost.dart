@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:sakeny/castom/button.dart';
 
@@ -6,14 +8,18 @@ class CastomMypost extends StatelessWidget {
       {required this.image,
       required this.price,
       required this.location,
-      required this.description});
+      required this.description,
+      required this.ontap
+      });
   String location;
   String price;
   String description;
   String image;
+  void Function()? ontap;
 
   @override
   Widget build(BuildContext context) {
+    var images=base64Decode(image);
     return Container(
       margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
       decoration: BoxDecoration(
@@ -26,9 +32,9 @@ class CastomMypost extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
-                image,
-                fit: BoxFit.cover,
+              child: Image.memory(
+                images,
+                fit: BoxFit.fill,
               ),
             ),
             const SizedBox(height: 20),
@@ -82,9 +88,7 @@ class CastomMypost extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             CastomButton(
-                onTap: () {
-                  Navigator.pushNamed(context, "viewpost");
-                },
+                onTap: ontap,
                 text: "اظهار الاعلان"),
           ],
         ),

@@ -177,11 +177,11 @@ class suggestpractice extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              CastomButton(onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return ViewPost(); 
-                },));
-              }, text: "التالى")
+              // // CastomButton(onTap: () {
+              // //   Navigator.push(context, MaterialPageRoute(builder: (context) {
+              // //     return ViewPost();
+              // //   },));
+              // }, text: "التالى")
             ],
           ),
         ),
