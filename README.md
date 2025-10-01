@@ -5,7 +5,6 @@ It allows property owners to post their flats, manage listings, review comments,
 Tenants can browse available properties, communicate with owners, and get assistance from an integrated chatbot.
 
 ---
-
 ## 📌 Features
 
 - 🔑 **User Authentication** (Login / Signup / Profile Management)  
