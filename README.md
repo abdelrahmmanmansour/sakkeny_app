@@ -4,7 +4,7 @@
 It allows property owners to post their flats, manage listings, review comments, and chat with tenants.  
 Tenants can browse available properties, communicate with owners, and get assistance from an integrated chatbot.
 
-📹 [Watch Demo Video](https://www.youtube.com/watch?v=smn11PMZO4k)
+📹 [Watch Demo Video](https://drive.google.com/drive/folders/1b06zs9WW0zrxHMbaY6fEorEwmNs9qNoN)
 
 ---
 ## 📌 Features
